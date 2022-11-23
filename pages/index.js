@@ -27,6 +27,7 @@ export default function Home() {
   return (
     <div>
       <h1>Todo app</h1>
+      <h2>Verison from Mac</h2>
       <form>
         <input 
           type="text"
