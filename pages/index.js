@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { Todo } from "../screens/Todo";
+import { FilterButton } from "../screens/FilterButton";
+import { Form } from "../screens/Form";
 
 export default function Home() {
   const [userInput, setUserInput] = useState("");
@@ -31,27 +34,12 @@ export default function Home() {
   return (
     <div className="todoapp stack-large">
       <h1>Todo app</h1>
-      <form>
-        <h2 className="label-wrapper">
-          <label htmlFor="new-todo-input" className="label__lg">
-            What needs to be done?
-          </label>
-        </h2>
-        <input 
-          type="text"
-          name="text"
-          id="new-todo-input"
-          className="input input__lg"
-          autoComplete="off"
-          placeholder="Enter a TODO item"
-          onChange={addTodo}
-        />
-        <button type="submit" className="btn__primary btn__lg" onClick={handleSubmit}>Add</button>
-      </form>
+      <Form 
+        addTodo={addTodo}
+        handleSubmit={handleSubmit}
+      />
       <div className="filters btn-group stack-exception">
-        <button type="button">Show all tasks</button>
-        <button>Show active tasks</button>
-        <button>Show completed tasks</button>
+       <FilterButton />
       </div>
       <h2 id="list-heading">Tasks Remaining</h2>
       <ul
@@ -61,16 +49,14 @@ export default function Home() {
       >
         {
           todoList.length >= 1 ? todoList.map((todo, index) => {
-            return <li className="todo stack-small" key={index}>{todo}
-            <div className="btn-group"><button type="button" className="btn btn__danger" onClick={(e) => {
-              e.preventDefault();
-              handleDelete(todo, index);
-            }}>Delete</button>
-            <button type="button" className="btn" onClick={(e) => {
-              e.preventDefault();
-              handleEdit();
-            }}>Edit</button></div>
-            </li>
+            return <Todo 
+              key={`${todo}-${index}`}
+              value={todo}
+              completed={false} 
+              id={index} 
+              index={index}
+              handleDelete={handleDelete}  
+            />
           })
           : ''
         }
@@ -78,3 +64,4 @@ export default function Home() {
     </div>
   )
 }
+
