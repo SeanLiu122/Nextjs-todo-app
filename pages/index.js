@@ -3,33 +3,100 @@ import { Todo } from "../screens/Todo";
 import { FilterButton } from "../screens/FilterButton";
 import { Form } from "../screens/Form";
 
+// import { Form, Form2 } from "../screens/Form";
+
+// localStorage to store data
+// typescript
+// eslint with prettier plugin
+
+// Nextjs routing + API routes
+
+// prisma with mongodb
+
+// Clean Code by Uncle bob 
+// unit test
 export default function Home() {
   const [userInput, setUserInput] = useState("");
-  const [todoList, setTodoList] = useState("");
+  const [todo, setTodo] = useState([{ id: "todo-0", name: "Eat", completed: true }]);
+  const [isEditing, setEditing] = useState(false);
 
   const addTodo = (e) => {
     e.preventDefault();
-
     setUserInput(e.target.value);
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    setTodoList([
-      userInput,
-      ...todoList
+    setTodo([
+      {id: `1${userInput}`, name: userInput, completed: false},
+      ...todo
     ]);
   }
 
-  const handleDelete = (todo, index) => {
-    const updatedArr = todoList.filter((todoItem, todoItemIndex) => index != todoItemIndex);
-    setTodoList(updatedArr);
+  const handleDelete = (task, index) => {
+    const updatedArr = todo.filter((todoObj, todoItemIndex) => index !== todoItemIndex);
+    setTodo(updatedArr);
   }
 
-  const handleEdit = () => {
-    console.log('editing');
+  const handleEdit = (id, newName) => {
+    const editedTaskList = todo.map((todoObj) => {
+      if(id === todoObj.id) {
+        // todoObj.name = newName;
+        return {...todoObj, name: newName};
+      }
+      return todoObj;
+    });
+    setTodo(editedTaskList);
   }
+
+  const editingTemplate = (
+    <form className="stack-small">
+      <div className="form-group">
+        <label className="todo-label" htmlFor={props.id}>
+          New name for {props.name}
+        </label>
+        <input id={props.id} className="todo-text" type="text" />
+      </div>
+      <div className="btn-group">
+        <button type="button" className="btn todo-cancel">
+          Cancel
+          <span className="visually-hidden">renaming {props.name}</span>
+        </button>
+        <button type="submit" className="btn btn_primary todo-edit">
+          Save
+          <span className="visually-hidden">new name for {props.name}</span>
+        </button>
+      </div>
+    </form>
+  );
+
+  const viewTemplate = (
+    <div className="stack-small">
+      <div className="c-cb">
+        <input 
+          id={props.id}
+          type="checkbox"
+          defaultChecked={props.completed}
+          onChange={() => props.toggleTaskCompleted(props.id)}
+        />
+        <label className="todo-label" htmlFor={props.id}>
+          {props.name}
+        </label>
+      </div>
+      <div className="btn-group">
+        <button type="button" className="btn">
+          Edit <span className="visually-hidden">{props.name}</span>
+        </button>
+        <button 
+          type="button" 
+          className="btn btn__danger"
+          onChange={() => props.deleteTask(props.id)}
+        >
+          Delete <span className="visually-hidden">{props.name}</span>
+        </button>
+      </div>
+    </div>
+  );
 
   return (
     <div className="todoapp stack-large">
@@ -48,14 +115,15 @@ export default function Home() {
         aria-labelledby="list-heading"
       >
         {
-          todoList.length >= 1 ? todoList.map((todo, index) => {
+          todo.length >= 1 ? todo.map((todoObj, index) => {
             return <Todo 
-              key={`${todo}-${index}`}
-              value={todo}
-              completed={false} 
-              id={index} 
+              key={`${todoObj.name}-${index}`}
+              value={todoObj.name}
+              completed={todoObj.completed} 
+              id={todoObj.id} 
               index={index}
               handleDelete={handleDelete}  
+              handleEdit={handleEdit}
             />
           })
           : ''

@@ -19,3 +19,6 @@ export const Form = (props) => {
     </form>
   );
 }
+export const Form2 = () => {
+  
+}
