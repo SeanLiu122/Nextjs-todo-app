@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { Button, Stack } from "@mui/material";
+
 export const Todo = (props) => {
   const [isEditing, setEditing] = useState(false);
   const [newName, setNewName] = useState('');
@@ -47,7 +49,7 @@ export const Todo = (props) => {
   );
   
   const viewTemplate = (
-    <div className="stack-small">
+    <div className="todo stack-small">
       <div className="c-cb">
         <input 
           id={props.id}
@@ -60,23 +62,23 @@ export const Todo = (props) => {
         </label>
       </div>
       <div className="btn-group">
-        <button 
-          type="button" 
-          className="btn"
-          onClick={() => setEditing(true)}
-        >
-          Edit <span className="visually-hidden">{props.name}</span>
-        </button>
-        <button 
-          type="button" 
-          className="btn btn__danger"
-          onClick={(e) => {
-            e.preventDefault();
-            props.deleteTask(props.id)
-          }}
-        >
-          Delete <span className="visually-hidden">{props.name}</span>
-        </button>
+        <Stack spacing={2} direction="row">
+          <Button
+            variant="contained"
+            onClick={() => setEditing(true)}
+          >
+            Edit <span className="visually-hidden">{ props.name}</span>
+          </Button>
+          <Button 
+            variant="contained"
+            onClick={(e) => {
+              e.preventDefault();
+              props.deleteTask(props.id)
+            }}
+          >
+            Delete <span className="visually-hidden">{props.name}</span>
+          </Button>
+        </Stack>
       </div>
     </div>
   );

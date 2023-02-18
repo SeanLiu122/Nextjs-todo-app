@@ -1,8 +1,11 @@
-import { use, useState } from "react";
+import { useState } from "react";
 import { nanoid } from "nanoid";
 import { Todo } from "../screens/Todo";
 import { FilterButton } from "../screens/FilterButton";
 import { Form } from "../screens/Form";
+import { NavBar } from '../components/NavBar';
+
+import { Box, Paper, Grid, Item } from '@mui/material';
 
 // import { Form, Form2 } from "../screens/Form";
 
@@ -97,23 +100,36 @@ export default function Home() {
   });
 
   return (
-    <div className="todoapp stack-large">
-      <h1>Todo app</h1>
-      <Form 
-        addTodo={addTodo}
-        handleSubmit={handleSubmit}
-      />
-      <div className="filters btn-group stack-exception">
-       {filterList}
+    <div>
+      <NavBar />
+      <div className="todoapp">
+        <Box sx={{ flexGrow: 1 }}>
+          <Grid container>
+            <Grid item xs={10} sm={10} md={6} lg={6}>
+              <input type="text" />
+            </Grid>                 
+          </Grid>
+        </Box>
+
+        <div>
+          <h1>Todo app</h1>
+          <Form 
+            addTodo={addTodo}
+            handleSubmit={handleSubmit}
+          />
+          <div className="filters btn-group stack-exception">
+          {filterList}
+          </div>
+          <h2 id="list-heading">{headingText}</h2>
+          <ul
+            role="list"
+            className="todo-list stack-large stack-exception"
+            aria-labelledby="list-heading"
+          >
+            {todoList}
+          </ul>
+        </div>
       </div>
-      <h2 id="list-heading">{headingText}</h2>
-      <ul
-        role="list"
-        className="todo-list stack-large stack-exception"
-        aria-labelledby="list-heading"
-      >
-        {todoList}
-      </ul>
     </div>
   )
 }
