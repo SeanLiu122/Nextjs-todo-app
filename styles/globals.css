@@ -30,3 +30,9 @@
 .todo-text:focus {
   box-shadow: inset 0 0 0 2px;
 } */
+
+.label-wrapper {
+  margin: 0;
+  flex: 0 0 100%;
+  text-align: center;
+}

@@ -102,9 +102,8 @@ export default function Home() {
   return (
     <div>
       <NavBar />
-      <div className="todoapp">
+      <Grid className="todoapp">
         <div>
-          <h1>Todo app</h1>
           <Form 
             addTodo={addTodo}
             handleSubmit={handleSubmit}
@@ -128,7 +127,7 @@ export default function Home() {
             </Grid>                 
           </Grid>
         </Box>
-      </div>
+      </Grid>
     </div>
   )
 }

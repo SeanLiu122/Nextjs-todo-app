@@ -1,22 +1,34 @@
+import { Button, Input, Stack } from "@mui/material";
+
 export const Form = (props) => {
   return (
-    <form>
-      <h2 className="label-wrapper">
-        <label htmlFor="new-todo-input" className="label__lg">
-          What needs to be done?
-        </label>
-      </h2>
-      <input 
+    <Stack 
+      direction="row"
+      spacing={8}
+      justifyContent="center"
+      sx={{ marginBottom: '30px' }}
+    >
+      <Input 
         type="text"
-        name="text"
         id="new-todo-input"
         className="input input__lg"
+        size="md"
         autoComplete="off"
-        placeholder="Enter a TODO item"
+        placeholder="Type in here…"
+        variant="solid" 
+        color="primary"
+        fullWidth
         onChange={props.addTodo}
       />
-      <button type="submit" className="btn__primary btn__lg" onClick={props.handleSubmit}>Add</button>
-    </form>
+      <Button 
+        type="submit" 
+        color="primary"
+        size="small"
+        variant="contained"
+        className="btn__primary btn__lg" 
+        onClick={props.handleSubmit}
+      >Add</Button>
+    </Stack>
   );
 }
 export const Form2 = () => {
