@@ -103,14 +103,6 @@ export default function Home() {
     <div>
       <NavBar />
       <div className="todoapp">
-        <Box sx={{ flexGrow: 1 }}>
-          <Grid container>
-            <Grid item xs={10} sm={10} md={6} lg={6}>
-              <input type="text" />
-            </Grid>                 
-          </Grid>
-        </Box>
-
         <div>
           <h1>Todo app</h1>
           <Form 
@@ -129,6 +121,13 @@ export default function Home() {
             {todoList}
           </ul>
         </div>
+        <Box sx={{ flexGrow: 1 }}>
+          <Grid container>
+            <Grid item xs={10} sm={10} md={6} lg={6}>
+              <input type="text" />
+            </Grid>                 
+          </Grid>
+        </Box>
       </div>
     </div>
   )
