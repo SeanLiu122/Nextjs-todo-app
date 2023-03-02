@@ -65,18 +65,20 @@ export const Todo = (props) => {
         <Stack spacing={2} direction="row">
           <Button
             variant="contained"
+            size="small"
             onClick={() => setEditing(true)}
           >
-            Edit <span className="visually-hidden">{ props.name}</span>
+            Edit
           </Button>
           <Button 
             variant="contained"
+            size="small"
             onClick={(e) => {
               e.preventDefault();
               props.deleteTask(props.id)
             }}
           >
-            Delete <span className="visually-hidden">{props.name}</span>
+            Delete
           </Button>
         </Stack>
       </div>

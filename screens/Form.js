@@ -6,7 +6,7 @@ export const Form = (props) => {
       direction="row"
       spacing={8}
       justifyContent="center"
-      sx={{ marginBottom: '30px' }}
+      sx={{ marginBottom: '10%' }}
     >
       <Input 
         type="text"

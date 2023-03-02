@@ -107,10 +107,8 @@ export default function Home() {
           <Form 
             addTodo={addTodo}
             handleSubmit={handleSubmit}
-          />
-          <div className="filters btn-group stack-exception">
+          />          
           {filterList}
-          </div>
           <h2 id="list-heading">{headingText}</h2>
           <ul
             role="list"
@@ -120,13 +118,6 @@ export default function Home() {
             {todoList}
           </ul>
         </div>
-        <Box sx={{ flexGrow: 1 }}>
-          <Grid container>
-            <Grid item xs={10} sm={10} md={6} lg={6}>
-              <input type="text" />
-            </Grid>                 
-          </Grid>
-        </Box>
       </Grid>
     </div>
   )
