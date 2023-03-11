@@ -1,17 +1,21 @@
 .todoapp {
+  background: #fff;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2.5rem 5rem 0 rgba(0, 0, 0, 0.1);
+}
+@media screen and (min-width: 550px) {
+  .todoapp-top {
+    padding: 4rem;
+  }
+}
+
+.todoapp-top {
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #fff;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2.5rem 5rem 0 rgba(0, 0, 0, 0.1);
 }
-@media screen and (min-width: 550px) {
-  .todoapp {
-    padding: 4rem;
-  }
-}
+
 /* Todo item styles */
 /* .todo {
   display: flex;
@@ -31,11 +35,11 @@
   box-shadow: inset 0 0 0 2px;
 } */
 
-.label-wrapper {
+/* .label-wrapper {
   margin: 0;
   flex: 0 0 100%;
   text-align: center;
-}
+} */
 
 /* .visually-hidden {
   position: absolute !important;

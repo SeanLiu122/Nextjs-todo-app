@@ -5,7 +5,8 @@ import { FilterButton } from "../screens/FilterButton";
 import { Form } from "../screens/Form";
 import { NavBar } from '../components/NavBar';
 
-import { Box, Paper, Grid, Item } from '@mui/material';
+import { Box, Paper, Grid, Item, List, ListItem } from '@mui/material';
+import { styled } from '@mui/material/styles';
 
 // import { Form, Form2 } from "../screens/Form";
 
@@ -99,10 +100,18 @@ export default function Home() {
     />
   });
 
+  const Item = styled(Paper)(({ theme }) => ({
+    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+    ...theme.typography.body2,
+    padding: theme.spacing(1),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  }));
+
   return (
-    <div>
+    <div className="todoapp">
       <NavBar />
-      <Grid className="todoapp">
+      <Grid className="todoapp-top">
         <div>
           <Form 
             addTodo={addTodo}
@@ -110,15 +119,10 @@ export default function Home() {
           />          
           {filterList}
           <h2 id="list-heading">{headingText}</h2>
-          <ul
-            role="list"
-            className="todo-list stack-large stack-exception"
-            aria-labelledby="list-heading"
-          >
-            {todoList}
-          </ul>
         </div>
       </Grid>
+      
+      {todoList}
     </div>
   )
 }
