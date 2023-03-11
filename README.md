@@ -21,10 +21,8 @@ Launch the app:
 npm run dev
 ```
 ### Showcase project
-<video src='D:\courses\cscourse\webdev\Nextjs-todo-app\videos\Todo_app_master.mp4' width="320" height="240"/></video>
-<video width="320" height="240" controls>
-  <source src="D:\courses\cscourse\webdev\Nextjs-todo-app\videos\Todo_app_master.mp4" type="video/mp4">
-</video>
+[![Youtube thumbnail image](http://img.youtube.com/vi/9WJnajEbwKg/0.jpg)](https://www.youtube.com/watch?v=1tY_hSs1wH4, "Simple Todo App")
+
 
 ## Source
 [mdn web docs -- React Todo App](https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/React_getting_started)
