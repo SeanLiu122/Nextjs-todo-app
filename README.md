@@ -1,2 +1,8 @@
 # Nextjs-todo-app
-no description
+
+## todo-app-zephyranthes version
+Used Material-UI (MUI) library (https://mui.com/)
+
+WIP...
+
+![TODO App MUI](./assets/image.png)
