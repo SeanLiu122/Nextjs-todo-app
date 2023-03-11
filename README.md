@@ -21,7 +21,8 @@ Launch the app:
 npm run dev
 ```
 ### Showcase project
-[![Youtube thumbnail image](https://www.youtube.com/watch?v=1tY_hSs1wH4, "Simple Todo App")
+[![Youtube thumbnail image](https://youtu.be/9WJnajEbwKg)](https://www.youtube.com/watch?v=1tY_hSs1wH4, "Simple Todo App")
+
 
 
 ## Source
