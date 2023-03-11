@@ -24,6 +24,7 @@ npm run dev
 <video width="320" height="240" controls>
   <source src="D:\courses\cscourse\webdev\Nextjs-todo-app\videos\Todo_app_master.mp4" type="video/mp4">
 </video>
+<video src='D:\courses\cscourse\webdev\Nextjs-todo-app\videos\Todo_app_master.mp4' width=180/>
 
 ## Source
 [mdn web docs -- React Todo App](https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/React_getting_started)
