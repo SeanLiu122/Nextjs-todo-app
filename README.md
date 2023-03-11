@@ -20,9 +20,9 @@ Launch the app:
 ```
 npm run dev
 ```
-### Showcase the app
+### Showcase project
 <video width="320" height="240" controls>
-  <source src="D:\courses\cscourse\webdev\Nextjs-todo-app\videos" type="video/mp4">
+  <source src="D:\courses\cscourse\webdev\Nextjs-todo-app\videos\Todo_app_master.mp4" type="video/mp4">
 </video>
 
 ## Source
