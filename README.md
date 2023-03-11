@@ -5,4 +5,4 @@ Used [Material-UI (MUI) library](https://mui.com/)
 
 WIP...
 
-![TODO App MUI](./assets/todov2.PNG?raw=true)
+![TODO App MUI](./pictures/todov2.PNG?raw=true)
