@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 
-import { Button, Stack, Paper, Grid, Item, Box, ListItem, List, ListItemAvatar, Avatar, ListItemText, IconButton } from "@mui/material";
+import { Button, Stack, Paper, Grid, Item, Box, ListItem, List, ListItemAvatar, Avatar, ListItemText, IconButton, Checkbox } from "@mui/material";
 import FolderIcon from '@mui/icons-material/Folder';
 import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
+import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import { styled } from '@mui/material/styles';
 
 export const Todo = (props) => {
@@ -60,61 +63,36 @@ export const Todo = (props) => {
   );
   
   const viewTemplate = (
-    <div className="todo stack-small">
-      <div className="c-cb">
-        <input 
+    <ListItem>
+        <Checkbox 
           id={props.id}
           type="checkbox"
           defaultChecked={props.completed}
           onChange={() => props.toggleTaskCompleted(props.id)}
         />
-        <label className="todo-label" htmlFor={props.id}>
-          {props.name}
-        </label>
-      </div>
-      <Stack spacing={2} direction="row">
-        <Button
-          variant="contained"
-          size="small"
+      <ListItemText
+        primary={props.name}
+      />
+      <IconButton>
+        <EditIcon 
           onClick={() => setEditing(true)}
-        >
-          Edit
-        </Button>
-        <Button 
-          variant="contained"
-          size="small"
+        />
+      </IconButton>
+      <IconButton edge="end" aria-label="delete">
+        <DeleteIcon 
           onClick={(e) => {
             e.preventDefault();
             props.deleteTask(props.id)
           }}
-        >
-          Delete
-        </Button>
-      </Stack>
-    </div>
+        />
+      </IconButton>
+    </ListItem>
   );
 
   return (
     <Grid item>
       <List>
-        <ListItem>
-          <ListItemAvatar>
-            <Avatar>
-              <FolderIcon />
-            </Avatar>
-          </ListItemAvatar>
-          <ListItemText
-            primary="Single-line item"
-          />
-          <IconButton edge="end" aria-label="delete">
-            <DeleteIcon />
-          </IconButton>
-        </ListItem>
-        <ListItem>
-          <Item>
-            {isEditing ? editingTemplate : viewTemplate}
-          </Item>
-        </ListItem>
+        {isEditing ? editingTemplate : viewTemplate}
       </List>
     </Grid>
   );
