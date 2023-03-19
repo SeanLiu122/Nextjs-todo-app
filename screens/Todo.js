@@ -23,14 +23,6 @@ export const Todo = (props) => {
     setEditing(false);
   }
 
-  const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  }));
-
   const editingTemplate = (
     <form className="stack-small" onSubmit={handleSubmit}>
       <div className="form-group">
@@ -97,46 +89,3 @@ export const Todo = (props) => {
     </Grid>
   );
 }
-
-
-{/* <li className="todo stack-small">
-  <div className="c-cb">
-    <input id={props.id} type="checkbox" defaultChecked={props.completed} />
-    <label className="todo-label" htmlFor={props.id}>
-      {props.value}
-    </label>
-  </div>
-  <div className="btn-group">
-    <button type="button" className="btn btn__danger" onClick={(e) => {
-      e.preventDefault();
-      props.handleDelete(props.value, props.index);
-    }}>Delete</button>
-    <button type="button" className="btn" onClick={(e) => {
-      e.preventDefault();
-      props.handleEdit();
-    }}>Edit</button>
-  </div>
-</li> */}
-
-// <Grid container spacing={2} columns>
-//         <Grid item xs={12} md={6}>
-//           <List>
-//             <ListItem>
-//               <Item>
-//                 <Todo 
-//                   key="eat01"
-//                   name="Eat banana"
-//                   completed={true} 
-//                   id="eat0100101" 
-//                   deleteTask={deleteTask}  
-//                   editTask={editTask}
-//                   toggleTaskCompleted={toggleTaskCompleted}
-//                 />
-//               </Item>
-//               <Item>
-//                 
-//               </Item>
-//             </ListItem>
-//           </List>
-//         </Grid>
-//       </Grid>
