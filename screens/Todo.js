@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
-import { Button, Stack, Paper, Grid, Item, Box, ListItem, List, ListItemAvatar, Avatar, ListItemText, IconButton, Checkbox } from "@mui/material";
+import { Button, Stack, Paper, Grid, Item, Box, ListItem, List, ListItemAvatar, Avatar, ListItemText, IconButton, Checkbox, TextField } from "@mui/material";
 import FolderIcon from '@mui/icons-material/Folder';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
-import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import CloseIcon from '@mui/icons-material/Close';
+import CheckIcon from '@mui/icons-material/Check';
 import { styled } from '@mui/material/styles';
 
 export const Todo = (props) => {
@@ -24,7 +24,28 @@ export const Todo = (props) => {
   }
 
   const editingTemplate = (
-    <form className="stack-small" onSubmit={handleSubmit}>
+    <ListItem>
+      <ListItemText
+        primary={props.name}
+      />
+      <TextField 
+        id="standard-basic" 
+        variant="standard" 
+        label={newName}
+        onChange={handleChange}
+      />
+      <IconButton>
+        <CloseIcon 
+          onClick={() => setEditing(false)}
+        />
+      </IconButton>
+      <IconButton edge="end" aria-label="delete">
+        <CheckIcon 
+          onClick={() => handleSubmit}
+        />
+      </IconButton>
+
+      {/* <form className="stack-small" onSubmit={handleSubmit}>
       <div className="form-group">
         <label className="todo-label" htmlFor={props.id}>
           New name for {props.name}
@@ -51,7 +72,8 @@ export const Todo = (props) => {
           <span className="visually-hidden">new name for {props.name}</span>
         </button>
       </div>
-    </form>
+    </form> */}
+    </ListItem>
   );
   
   const viewTemplate = (
