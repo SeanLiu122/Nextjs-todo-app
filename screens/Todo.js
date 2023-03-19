@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 
-import { Button, Stack, Paper, Grid, Item, Box } from "@mui/material";
+import { Button, Stack, Paper, Grid, Item, Box, ListItem, List, ListItemAvatar, Avatar, ListItemText, IconButton } from "@mui/material";
+import FolderIcon from '@mui/icons-material/Folder';
+import DeleteIcon from '@mui/icons-material/Delete';
 import { styled } from '@mui/material/styles';
 
 export const Todo = (props) => {
@@ -70,43 +72,50 @@ export const Todo = (props) => {
           {props.name}
         </label>
       </div>
-      <div className="btn-group">
-        <Stack spacing={2} direction="row">
-          <Button
-            variant="contained"
-            size="small"
-            onClick={() => setEditing(true)}
-          >
-            Edit
-          </Button>
-          <Button 
-            variant="contained"
-            size="small"
-            onClick={(e) => {
-              e.preventDefault();
-              props.deleteTask(props.id)
-            }}
-          >
-            Delete
-          </Button>
-        </Stack>
-      </div>
+      <Stack spacing={2} direction="row">
+        <Button
+          variant="contained"
+          size="small"
+          onClick={() => setEditing(true)}
+        >
+          Edit
+        </Button>
+        <Button 
+          variant="contained"
+          size="small"
+          onClick={(e) => {
+            e.preventDefault();
+            props.deleteTask(props.id)
+          }}
+        >
+          Delete
+        </Button>
+      </Stack>
     </div>
   );
 
   return (
-    <Grid 
-      container 
-      spacing={2}
-      direction="column"
-      justifyContent="start"
-      alignItems="center"
-    >
-      <Grid item xs={6} md={8}>
-        <Item>
-          {isEditing ? editingTemplate : viewTemplate}
-        </Item>
-      </Grid>
+    <Grid item>
+      <List>
+        <ListItem>
+          <ListItemAvatar>
+            <Avatar>
+              <FolderIcon />
+            </Avatar>
+          </ListItemAvatar>
+          <ListItemText
+            primary="Single-line item"
+          />
+          <IconButton edge="end" aria-label="delete">
+            <DeleteIcon />
+          </IconButton>
+        </ListItem>
+        <ListItem>
+          <Item>
+            {isEditing ? editingTemplate : viewTemplate}
+          </Item>
+        </ListItem>
+      </List>
     </Grid>
   );
 }
