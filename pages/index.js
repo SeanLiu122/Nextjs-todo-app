@@ -21,6 +21,13 @@ import { styled } from '@mui/material/styles';
 // Clean Code by Uncle bob 
 // unit test
 
+
+// 3/18/23
+// Container -> has a max width = 1000px; children 100% width
+// use Stack
+// sx={{}}
+
+
 const FILTER_MAP = {
   All: () => true,
   Active: (todo) => !todo.completed,
@@ -100,18 +107,19 @@ export default function Home() {
     />
   });
 
-  const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  }));
-
   return (
-    <div className="todoapp">
+    <Box sx={{
+      background: '#fff',
+      boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2.5rem 5rem 0 rgba(0, 0, 0, 0.1)'
+    }}>
       <NavBar />
-      <Grid className="todoapp-top">
+      <Grid sx={{
+        width: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center'
+      }}>
         <div>
           <Form 
             addTodo={addTodo}
@@ -121,9 +129,21 @@ export default function Home() {
           <h2 id="list-heading">{headingText}</h2>
         </div>
       </Grid>
-      
+      <Grid 
+        container 
+        spacing={2}
+        alignItems="center"
+        justifyContent="start"
+      >
+        <Grid item xs={8}>
+          <Paper>
+            xs={8}
+          </Paper>
+        </Grid>
+      </Grid>
       {todoList}
-    </div>
+      
+    </Box>
   )
 }
 

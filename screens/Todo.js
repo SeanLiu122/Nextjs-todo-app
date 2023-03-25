@@ -2,6 +2,23 @@ import React, { useState } from 'react';
 
 import { Button, Stack, Paper, Grid, Item, Box } from "@mui/material";
 import { styled } from '@mui/material/styles';
+import { ClassNames } from '@emotion/react';
+
+//create our style
+const styles = {
+  root: {
+    flexGrow: 1,
+    width: "100%"
+  },
+  paper: {
+    padding: 20,
+    marginBottom: 10,
+    // height: 50,
+    // width: 550,
+    width: "100%",
+    backgroundColor: "#CDCDCD"
+  }
+};
 
 export const Todo = (props) => {
   const [isEditing, setEditing] = useState(false);
@@ -95,19 +112,21 @@ export const Todo = (props) => {
   );
 
   return (
-    <Grid 
-      container 
-      spacing={2}
-      direction="column"
-      justifyContent="start"
-      alignItems="center"
-    >
-      <Grid item xs={6} md={8}>
-        <Item>
-          {isEditing ? editingTemplate : viewTemplate}
-        </Item>
+    <div style={styles.root}>
+      <Grid 
+        container 
+        spacing={2}
+        direction="column"
+        justifyContent="start"
+        alignItems="center"
+      >
+        <Grid key={props.key} item xs={8}>
+          <Paper style={styles.paper}>
+            {isEditing ? editingTemplate : viewTemplate}
+          </Paper>
+        </Grid>
       </Grid>
-    </Grid>
+    </div>
   );
 }
 
