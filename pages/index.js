@@ -5,7 +5,7 @@ import { FilterButton } from "../screens/FilterButton";
 import { Form } from "../screens/Form";
 import { NavBar } from '../components/NavBar';
 
-import { Box, Paper, Grid, Item, List, ListItem } from '@mui/material';
+import { Box, Paper, Grid, Item, List, ListItem, Container, Stack } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
 // import { Form, Form2 } from "../screens/Form";
@@ -108,42 +108,41 @@ export default function Home() {
   });
 
   return (
-    <Box sx={{
-      background: '#fff',
-      boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2.5rem 5rem 0 rgba(0, 0, 0, 0.1)'
-    }}>
-      <NavBar />
-      <Grid sx={{
-        width: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center'
+    <Container maxWidth='md'>
+      <Box sx={{
+        background: '#fff',
+        boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2.5rem 5rem 0 rgba(0, 0, 0, 0.1)',
       }}>
-        <div>
-          <Form 
-            addTodo={addTodo}
-            handleSubmit={handleSubmit}
-          />          
-          {filterList}
-          <h2 id="list-heading">{headingText}</h2>
-        </div>
-      </Grid>
-      <Grid 
-        container 
-        spacing={2}
-        alignItems="center"
-        justifyContent="start"
-      >
-        <Grid item xs={8}>
-          <Paper>
-            xs={8}
-          </Paper>
-        </Grid>
-      </Grid>
-      {todoList}
-      
-    </Box>
+        <NavBar />
+        <Stack>
+          <Item>
+            <Grid className="todoapp-top">
+              <div>
+                <Form 
+                  addTodo={addTodo}
+                  handleSubmit={handleSubmit}
+                />          
+              </div>
+            </Grid>
+          </Item>
+          <Item>
+            {filterList}
+            <h2 id="list-heading">{headingText}</h2>
+          </Item>
+          <Item>
+            <Grid
+              container
+              spacing={2}
+              direction="column"
+              justifyContent="start"
+              alignItems="stretch"
+            > 
+              {todoList}
+            </Grid>
+          </Item>
+        </Stack>
+      </Box>
+    </Container>
   )
 }
 

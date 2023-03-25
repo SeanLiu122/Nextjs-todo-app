@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 
-import { Button, Stack, Paper, Grid, Item, Box } from "@mui/material";
+import { Button, Stack, Paper, Grid, Item, Box, ListItem, List, ListItemAvatar, Avatar, ListItemText, IconButton, Checkbox, TextField } from "@mui/material";
+import FolderIcon from '@mui/icons-material/Folder';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+import CloseIcon from '@mui/icons-material/Close';
+import CheckIcon from '@mui/icons-material/Check';
 import { styled } from '@mui/material/styles';
 import { ClassNames } from '@emotion/react';
 
@@ -35,16 +40,29 @@ export const Todo = (props) => {
     setEditing(false);
   }
 
-  const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  }));
-
   const editingTemplate = (
-    <form className="stack-small" onSubmit={handleSubmit}>
+    <ListItem>
+      <ListItemText
+        primary={props.name}
+      />
+      <TextField 
+        id="standard-basic" 
+        variant="standard" 
+        label={newName}
+        onChange={handleChange}
+      />
+      <IconButton>
+        <CloseIcon 
+          onClick={() => setEditing(false)}
+        />
+      </IconButton>
+      <IconButton edge="end" aria-label="delete">
+        <CheckIcon 
+          onClick={() => handleSubmit}
+        />
+      </IconButton>
+
+      {/* <form className="stack-small" onSubmit={handleSubmit}>
       <div className="form-group">
         <label className="todo-label" htmlFor={props.id}>
           New name for {props.name}
@@ -71,104 +89,42 @@ export const Todo = (props) => {
           <span className="visually-hidden">new name for {props.name}</span>
         </button>
       </div>
-    </form>
+    </form> */}
+    </ListItem>
   );
   
   const viewTemplate = (
-    <div className="todo stack-small">
-      <div className="c-cb">
-        <input 
+    <ListItem>
+        <Checkbox 
           id={props.id}
           type="checkbox"
           defaultChecked={props.completed}
           onChange={() => props.toggleTaskCompleted(props.id)}
         />
-        <label className="todo-label" htmlFor={props.id}>
-          {props.name}
-        </label>
-      </div>
-      <div className="btn-group">
-        <Stack spacing={2} direction="row">
-          <Button
-            variant="contained"
-            size="small"
-            onClick={() => setEditing(true)}
-          >
-            Edit
-          </Button>
-          <Button 
-            variant="contained"
-            size="small"
-            onClick={(e) => {
-              e.preventDefault();
-              props.deleteTask(props.id)
-            }}
-          >
-            Delete
-          </Button>
-        </Stack>
-      </div>
-    </div>
+      <ListItemText
+        primary={props.name}
+      />
+      <IconButton>
+        <EditIcon 
+          onClick={() => setEditing(true)}
+        />
+      </IconButton>
+      <IconButton edge="end" aria-label="delete">
+        <DeleteIcon 
+          onClick={(e) => {
+            e.preventDefault();
+            props.deleteTask(props.id)
+          }}
+        />
+      </IconButton>
+    </ListItem>
   );
 
   return (
-    <div style={styles.root}>
-      <Grid 
-        container 
-        spacing={2}
-        direction="column"
-        justifyContent="start"
-        alignItems="center"
-      >
-        <Grid key={props.key} item xs={8}>
-          <Paper style={styles.paper}>
-            {isEditing ? editingTemplate : viewTemplate}
-          </Paper>
-        </Grid>
-      </Grid>
-    </div>
+    <Grid item>
+      <List>
+        {isEditing ? editingTemplate : viewTemplate}
+      </List>
+    </Grid>
   );
 }
-
-
-{/* <li className="todo stack-small">
-  <div className="c-cb">
-    <input id={props.id} type="checkbox" defaultChecked={props.completed} />
-    <label className="todo-label" htmlFor={props.id}>
-      {props.value}
-    </label>
-  </div>
-  <div className="btn-group">
-    <button type="button" className="btn btn__danger" onClick={(e) => {
-      e.preventDefault();
-      props.handleDelete(props.value, props.index);
-    }}>Delete</button>
-    <button type="button" className="btn" onClick={(e) => {
-      e.preventDefault();
-      props.handleEdit();
-    }}>Edit</button>
-  </div>
-</li> */}
-
-// <Grid container spacing={2} columns>
-//         <Grid item xs={12} md={6}>
-//           <List>
-//             <ListItem>
-//               <Item>
-//                 <Todo 
-//                   key="eat01"
-//                   name="Eat banana"
-//                   completed={true} 
-//                   id="eat0100101" 
-//                   deleteTask={deleteTask}  
-//                   editTask={editTask}
-//                   toggleTaskCompleted={toggleTaskCompleted}
-//                 />
-//               </Item>
-//               <Item>
-//                 
-//               </Item>
-//             </ListItem>
-//           </List>
-//         </Grid>
-//       </Grid>
