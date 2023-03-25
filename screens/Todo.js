@@ -40,59 +40,6 @@ export const Todo = (props) => {
     setEditing(false);
   }
 
-  const editingTemplate = (
-    <ListItem>
-      <ListItemText
-        primary={props.name}
-      />
-      <TextField 
-        id="standard-basic" 
-        variant="standard" 
-        label={newName}
-        onChange={handleChange}
-      />
-      <IconButton>
-        <CloseIcon 
-          onClick={() => setEditing(false)}
-        />
-      </IconButton>
-      <IconButton edge="end" aria-label="delete">
-        <CheckIcon 
-          onClick={() => handleSubmit}
-        />
-      </IconButton>
-
-      {/* <form className="stack-small" onSubmit={handleSubmit}>
-      <div className="form-group">
-        <label className="todo-label" htmlFor={props.id}>
-          New name for {props.name}
-        </label>
-        <input 
-          id={props.id} 
-          className="todo-text"
-          type="text" 
-          name={newName}
-          onChange={handleChange}
-        />
-      </div>
-      <div className="btn-group">
-        <button 
-          type="button" 
-          className="btn todo-cancel"
-          onClick={() => setEditing(false)}
-        >
-          Cancel
-          <span className="visually-hidden">renaming {props.name}</span>
-        </button>
-        <button type="submit" className="btn btn_primary todo-edit">
-          Save
-          <span className="visually-hidden">new name for {props.name}</span>
-        </button>
-      </div>
-    </form> */}
-    </ListItem>
-  );
-  
   const viewTemplate = (
     <ListItem>
         <Checkbox 
@@ -123,7 +70,7 @@ export const Todo = (props) => {
   return (
     <Grid item>
       <List>
-        {isEditing ? editingTemplate : viewTemplate}
+        {viewTemplate}
       </List>
     </Grid>
   );
