@@ -5,7 +5,7 @@ import { FilterButton } from "../screens/FilterButton";
 import { Form } from "../screens/Form";
 import { NavBar } from '../components/NavBar';
 
-import { Box, Paper, Grid, Item, List, ListItem, Container, Stack } from '@mui/material';
+import { Box, Paper, Grid, List, ListItem, Container, Stack } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
 // import { Form, Form2 } from "../screens/Form";
@@ -35,6 +35,14 @@ const FILTER_MAP = {
 };
 
 const FILTER_NAMES = Object.keys(FILTER_MAP);
+
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+}));
 
 export default function Home() {
   const [userInput, setUserInput] = useState("");
